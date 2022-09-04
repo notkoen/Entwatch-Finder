@@ -124,12 +124,18 @@ public Action Command_Spawn(int client, int args)
 
 public Action Command_Goto(int client, int args)
 {
+    if (args < 1)
+    {
+        ReplyToCommand(client, "[EW-Help] Usage: sm_gotoent <Entity Index>");
+        return Plugin_Handled;
+    }
+    
     char arg1[256];
     GetCmdArgString(arg1, sizeof(arg1));
 
     if (StrEqual(arg1, ""))
     {
-        ReplyToCommand(client, "[EW-Help] Usage: sm_gotoent <entity index>");
+        ReplyToCommand(client, "[EW-Help] Usage: sm_gotoent <Entity Index>");
         return Plugin_Handled;
     }
     
